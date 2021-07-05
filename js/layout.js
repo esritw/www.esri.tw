@@ -18,7 +18,24 @@
 
 	/// Landing Page
 	function initLandingPage () {
+		// 修正容器 #page
+		$('#page').addClass(['ui', 'grid']);
+		$('#page').css('margin-top', '0px');
+		
+		// 修正網站自動產生的元素
+		var autoComponents = [
+			'.contentheading',  /// 標題
+			'.articleinfo',		/// 更新時間, 作者, 建立時間
+			'.buttonheading',   /// pdf, 列印, mail 功能
+			'.iteminfo'			/// 所屬的單元, 分類 
+		];
 
+		autoComponents.forEach(function (ele, idx) {
+			var selector = '#page > ' + ele;
+			/// 隱藏所有元素
+			$(selector).css('display', 'none');
+
+		});
 	}
 
 	/// Arctile Page
