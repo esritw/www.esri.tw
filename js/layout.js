@@ -92,6 +92,7 @@
 		
 		/// 新增FB需要的Meta標籤
         	addFbMeta();
+		addFbBtn();
 	}
 
 	/// Blog Page
