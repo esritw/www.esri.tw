@@ -79,25 +79,9 @@
 				}
 
 				/// 修正articleinfo顯示資訊
-				if (ele === '.articleinfo') {
-					var infos = new Object();
-
-					$(selector).children().each(function (idx, ele) {
-						var text = ele.innerText;
-
-						if ( ele.classList.contains('createdby') ) 
-							infos.author = ele.innerText.split(' ')[1];
-						if ( ele.classList.contains('createdate') ) {
-							var createdate = ele.innerText.split(' ');
-							infos.date = createdate[2] + ' ' + 
-										 createdate[1] + ', &nbsp;&nbsp;'+  createdate[3];
-						}
-					});
-
-					$(selector).empty();
-					$(selector).css('text-indent', '0px')
-							   .append(infos.date + ' &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; ' + infos.author);
-				}
+				if (ele === '.articleinfo')
+					addArticleInfo (selector);
+				
 
 				/// 移除網站自動產生的 pdf預覽, 列印, mail 功能
 				if (ele === '.buttonheading' || ele === '.iteminfo')
@@ -105,12 +89,74 @@
 
 			}
 		});
+		
+		/// 新增FB需要的Meta標籤
+        	addFbMeta();
 	}
 
 	/// Blog Page
 	function initBlogPage () {
 
 	}
+    
+    /********************
+     * private functions
+     *******************/
+    var addArticleInfo = function (selector) {
+        var infos = new Object();
+
+        $(selector).children().each(function (idx, ele) {
+            var text = ele.innerText;
+
+            if ( ele.classList.contains('createdby') ) 
+                infos.author = ele.innerText.split(' ')[1];
+            
+            if ( ele.classList.contains('createdate') ) {
+                var createdate = ele.innerText.split(' ');
+                infos.date = createdate[2] + ' ' + createdate[1] + ', &nbsp;&nbsp;'+  createdate[3];
+            }
+        });
+
+        $(selector).empty();
+        $(selector).css('text-indent', '0px').append(infos.date + ' &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; ' + infos.author);    
+    };
+
+    var addFbMeta = function () {
+        var pageUrl = window.location.href,
+            pageTitle = $('#page .contentheading').text(),
+            pageImage = !( $('#page img').attr('src') )? "http://www.esri.tw/images/rwd/header/idtlogo.png": $('#page img').attr('src');
+
+        var metas = [
+            '<meta property="og:url"   content="' + pageUrl + '" />',
+            '<meta property="og:type"  content="website" />',
+            '<meta property="og:title" content="' + pageTitle + '" />',
+            '<meta property="og:image" content="' + pageImage + '" />'
+        ];
+
+        $('head').prepend( metas.join('') );
+    };
+
+    var addFbBtn = function () {
+        /// 初始化 fb
+        $('body').append('<div id="fb-root"></div>');
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v11.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        // 建立按鈕
+        var shareBtn = '<div class="fb-share-button" data-href="' + window.location.href + '" data-layout="button"></div>';
+        $('.articleinfo')
+            .css('margin-bottom', '10px')
+            .after('<div class="shareButtons"></div>');
+        $('.shareButtons')
+            .css('margin-bottom', '24px')
+            .append(shareBtn);
+
+    }
 
 	/********************
 	 * Export Modules
