@@ -40,7 +40,71 @@
 
 	/// Arctile Page
 	function initArticlePage () {
+		/// 設定頁面顏色
+		$('body').css('background', '#f8f9fa');
 
+		/// 在 #page 外建立容器 #nxg-content
+		$('#page').before('<div id="nxg-content"></div>');
+		$('#nxg-content').append($('#page')).addClass(['ui', 'text', 'container']);
+
+		/// 設定標題顏色
+		$('#page h1, #page h2, #page h3, #page h4, #page h5, #page h6').css('color', '#0079c1');
+
+		/// 設定文字與段落
+		$('#page p').css('font-size', '18px')
+			    .css('text-indent', '36px')
+			    .css('text-align', 'justify')
+			    .css('line-height', '1.8')
+			    .css('margin-bottom', '24px');
+
+		// 修正網站自動產生的元素
+		var autoComponents = [
+			'.contentheading',  /// 標題
+			'.articleinfo',	    /// 更新時間, 作者, 建立時間
+			'.buttonheading',   /// pdf, 列印, mail 功能
+			'.iteminfo'	    /// 所屬的單元, 分類 
+		];
+
+		autoComponents.forEach(function (ele, idx) {
+			var selector = '#page > ' + ele;
+
+			if ( $(selector).length > 0 ) {	
+				/// 修正文章標題顯示方式
+				if (ele === '.contentheading') {
+					$(selector)
+					  .css('margin-top', '64px')
+					  .css('font-size', '36px')
+					  .css('color', 'black')
+					  .css('margin-bottom', '24px');
+				}
+
+				/// 修正articleinfo顯示資訊
+				if (ele === '.articleinfo') {
+					var infos = new Object();
+
+					$(selector).children().each(function (idx, ele) {
+						var text = ele.innerText;
+
+						if ( ele.classList.contains('createdby') ) 
+							infos.author = ele.innerText.split(' ')[1];
+						if ( ele.classList.contains('createdate') ) {
+							var createdate = ele.innerText.split(' ');
+							infos.date = createdate[2] + ' ' + 
+										 createdate[1] + ', &nbsp;&nbsp;'+  createdate[3];
+						}
+					});
+
+					$(selector).empty();
+					$(selector).css('text-indent', '0px')
+							   .append(infos.date + ' &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; ' + infos.author);
+				}
+
+				/// 移除網站自動產生的 pdf預覽, 列印, mail 功能
+				if (ele === '.buttonheading' || ele === '.iteminfo')
+					$(selector).remove();
+
+			}
+		});
 	}
 
 	/// Blog Page
@@ -57,7 +121,7 @@
 		layout.initialize = function () {
 			if (pageType === 'Landing Page')
 				initLandingPage();
-			
+
 			if (pageType === 'Article')
 				initArticlePage();
 
