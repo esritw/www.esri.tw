@@ -90,6 +90,11 @@
 			}
 		});
 		
+		/// 設定圖片顯示
+		$('#page p img').removeAttr('style');
+		$('#page p img').parent().removeAttr('style');
+		$('#page p img').css('width', '100%');
+		
 		/// 新增FB需要的Meta標籤
         	addFbMeta();
 		addFbBtn();
