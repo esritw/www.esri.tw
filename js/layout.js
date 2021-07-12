@@ -5,6 +5,8 @@
 	/// 頁面類型
 	var pageType = (function (){
 		var qstr = global.location.search;
+		if ( qstr.includes('readmode=on') )
+            		activeReadmode();
 		if ( qstr.includes('view=article') && qstr.includes('landingpage=true') )
 			return 'Landing Page';
 		if ( qstr.includes('view=article') )
@@ -15,6 +17,17 @@
 		// 預設值
 		return "default";
 	}());
+	
+	/// 閱讀模式
+	function activeReadmode () {
+		var hideElements = [
+		    '#nxg-main-navigator',
+		    '#nxg-footer',
+		    '#nxg-copyright'
+		];
+
+		$(hideElements.join(', ')).hide();
+	}
 
 	/// Landing Page
 	function initLandingPage () {
