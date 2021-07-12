@@ -1,12 +1,15 @@
 (function (global, $) {
 	var nxg = global.nxg;
 	var namespace = nxg.namespace;
-
+	
+	/// 閱讀模式
+    	if ( global.location.search.includes('readmode=on') )
+        	activeReadmode();
+	
 	/// 頁面類型
 	var pageType = (function (){
 		var qstr = global.location.search;
-		if ( qstr.includes('readmode=on') )
-            		activeReadmode();
+		
 		if ( qstr.includes('view=article') && qstr.includes('landingpage=true') )
 			return 'Landing Page';
 		if ( qstr.includes('view=article') )
