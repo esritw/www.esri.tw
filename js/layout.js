@@ -2,10 +2,6 @@
 	var nxg = global.nxg;
 	var namespace = nxg.namespace;
 	
-	/// 閱讀模式
-    	if ( global.location.search.includes('readmode=on') )
-        	activeReadmode();
-	
 	/// 頁面類型
 	var pageType = (function (){
 		var qstr = global.location.search;
@@ -214,6 +210,10 @@
 
 			if (pageType === 'default')
 				initLandingPage();
+		    	
+			if ( window.location.search.includes('readmode=on') )
+                		activeReadmode();
+			
 		};
 
 }(window, jQuery));
