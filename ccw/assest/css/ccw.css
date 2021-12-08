@@ -22,6 +22,14 @@
 .top-nav-link:focus {
 	outline: black auto 1px;
 }
+
+#topnav-tablet-logo {
+	padding: 0;
+}
+
+#topnav-tablet-logo	.icon-idtlogo {
+	font-size: 1.5rem;
+}
 /*=============================
 	end of top-navigation
  ==============================*/
