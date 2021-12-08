@@ -39,7 +39,4 @@
     	ccw.namespace = namespace;
         ccw.addOnLoadEvent = addOnLoadEvent;
     
-    // initialize calcite web components
-    addOnLoadEvent(global.calcite.init);
-    
 }(window));
