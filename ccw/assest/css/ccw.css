@@ -1,4 +1,4 @@
-/*=========================
+=========================
 	joomla layout modify
  ==========================*/
 #jv-source-content {
@@ -9,8 +9,9 @@
  ==============================*/
 
 /*=========================
-	top-navigation
+	navigation
  ==========================*/
+/*---- top navgation ---*/
 #topnav {
 	padding-bottom: 0px;
 }
@@ -20,14 +21,33 @@
 }
 
 .top-nav-link:focus {
-    outline: black auto 1px;
+	outline: black auto 1px;
 }
 
 #topnav-tablet-logo {
-    padding: 0;
+	padding: 0;
+}
+
+/*---- footer navgation ---*/
+.footer .accordion {
+    border: none;
+    background-color: transparent;
+}
+
+.footer .accordion .accordion-title {
+    border: none;
+}
+
+.ccw-footer-tablet-menu-link {
+    /*box-shadow: inset 0 -1px 0 0 #e0e0e0;*/
+    color: #595959;
+    display: block;
+    padding-left: 2rem;
+    padding-top: 10px;
+    padding-bottom: 5px;
 }
 /*=============================
-	end of top-navigation
+	end navigation
  ==============================*/
 
 /*======================
@@ -105,4 +125,4 @@
 }
 /*=============================
 	end of ccw-dropdown
- ==============================*/
+ ==============================
