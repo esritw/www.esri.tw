@@ -25,8 +25,8 @@
     // ============================
     var initSinglePage = function () {
         // 搬移內容
-        $('#ccw-content').append( $('#jv-source-content')[0].innerHTML );
-        $('#jv-source-content').remove();
+        $('#ccw-content').append( $('#ccw-source-content')[0].innerHTML );
+        $('#ccw-source-content').remove();
     };
 
     // ============================
