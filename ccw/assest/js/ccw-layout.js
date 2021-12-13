@@ -7,21 +7,10 @@
         thumbUrl: "http://www.esri.tw/images/ccw/layout/blog/default-thumb.jpg"
     }
 
-    // UI Nodes
-    var ui = {
-        'ccw': {
-            'root': $('#ccw-content'),
-            'source': $('#ccw-source-content')
-        },
-        'jv': {
-            'root': $('#jv-source-content')
-        }
-    };
-
     // 判斷頁面類型
     var getPageType = function () {
         var qstr = global.location.search,
-            ccwContent = ui.ccw.source.length;
+            ccwContent = $('#ccw-source-content').length;
 
         if ( qstr.includes('view=article') && ccwContent )  return 'single-page';
         if ( qstr.includes('view=article') && !ccwContent ) return 'article';
@@ -36,8 +25,8 @@
     // ============================
     var initSinglePage = function () {
         // 搬移內容
-        ui.ccw.root.append( ui.jv.root[0].innerHTML );
-        ui.jv.root.remove();
+        $('#ccw-content').append( $('#jv-source-content')[0].innerHTML );
+        $('#jv-source-content').remove();
     };
 
     // ============================
@@ -51,14 +40,14 @@
     //      Blog
     // ============================
     var initBlogPage = function () {
-        var articles = _getArticles(ui.jv.root),
+        var articles = _getArticles($('#jv-source-content')),
             articlesHTML = _createArticlesHTML(articles);
         
         // var pagination = _getPagination(),
         //     paginationHTML = _createPaginationHTML(pagination);
 
-        ui.ccw.root.append(articlesHTML);
-        // ui.ccw.root.append(paginationHTML);
+        $('#ccw-content').append(articlesHTML);
+        // $('#ccw-content').append(paginationHTML);
     };
 
     function _getArticles (jvroot) {
@@ -154,9 +143,6 @@
     //      Export Modules & add Document Onload Event
     // ========================================================
     var layout = ccw.namespace('global.ccw.layout');
-        layout.initSinglePage = initSinglePage;
-        layout.initArticlePage = initArticlePage;
-        layout.initBlogPage = initBlogPage;
         
     ccw.addOnLoadEvent(initLayout);
 
