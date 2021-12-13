@@ -154,6 +154,9 @@
     //      Export Modules & add Document Onload Event
     // ========================================================
     var layout = ccw.namespace('global.ccw.layout');
+        layout.initSinglePage = initSinglePage;
+        layout.initArticlePage = initArticlePage;
+        layout.initBlogPage = initBlogPage;
         
     ccw.addOnLoadEvent(initLayout);
 
