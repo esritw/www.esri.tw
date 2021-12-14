@@ -260,9 +260,9 @@
         var html = '';  
         for (var i=start; i<=max; i++) {
             if (i === current) 
-                html += '<a href="' + links(i-1) + '" class="btn">' + i + '</a>';
+                html += '<a href="' + links[i-1] + '" class="btn">' + i + '</a>';
             else
-                html += '<a href="' + links(i-1) + '" class="btn btn-transparent">' + i + '</a>';
+                html += '<a href="' + links[i-1] + '" class="btn btn-transparent">' + i + '</a>';
         }
         return html;
     }
