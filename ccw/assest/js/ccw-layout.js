@@ -197,7 +197,7 @@
             nextHTML = blog_pagination_createNextHTML(pagination),
             endHTML = '</div>';
         
-        return startHTML + preHTML + pageNumHTML + nextHTML + endHTML;
+        return startHTML + preHTML + numberHTML + nextHTML + endHTML;
     }
 
     function blog_pagination_createPreHTML (pagination) {
