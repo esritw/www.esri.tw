@@ -273,7 +273,7 @@
             current = pagination.current.num,
             max = pagination.current.num;
         
-        var isBig5 = (max-start)>5;
+        var isBig5 = (max-start) >= 5;
         
         if (isBig5) {
             html += '<a href="'+ links[start-1] +'" class="btn btn-transparent">' + start + '</a>';
@@ -292,7 +292,7 @@
             current = pagination.current.num,
             max = pagination.last.num;
 
-        var isBig5 = (max-current)>5;
+        var isBig5 = (max-current) >= 5;
 
         if (isBig5) {
             html += '<a href="'+ links[current] +'" class="btn btn-transparent">' + (current+1) + '</a>';
