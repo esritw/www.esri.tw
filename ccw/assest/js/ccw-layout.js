@@ -131,7 +131,7 @@
 
     function post_addHeaderId (contentRoot, ids) {
         contentRoot.find('h1, h2, h3, h4, h5, h6').each(function (idx, header) {
-            header.id = ids[idx];
+            if (idx > 0) header.id = ids[idx-1];
         });
     } 
 
