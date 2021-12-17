@@ -44,7 +44,12 @@
 
         /// 清除原始內文
         $('#jv-source-content').empty();
-
+        
+        if (!postConfig.toc.ids.length) {
+            $('#ccw-post-content').addClass('center-column');
+            $('#ccw-post-toc').hide();
+        }
+        
         /// 啟動 scroll 與 sticky 行為
         global.calcite.init();
     };
