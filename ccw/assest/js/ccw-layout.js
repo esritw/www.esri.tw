@@ -13,7 +13,7 @@
             ccwContent = $('#ccw-source-content').length;
 
         if ( qstr.includes('view=article') && ccwContent )  return 'single-page';
-        if ( qstr.includes('view=article') && !ccwContent ) return 'article';
+        if ( qstr.includes('view=article') && !ccwContent ) return 'post';
         if ( qstr.includes('layout=blog') )   return 'blog';
         if ( qstr.includes('searchword=') ) return 'search';
         
@@ -30,23 +30,122 @@
     };
 
     // ============================
-    //      article
+    //      Post
     // ============================
-    var initArticlePage = function () {
-        // do something ...
+    var initPostPage = function () {
+        var postConfig = post_getConfig( $('#jv-source-content') ),
+            postHTML = post_createHTML(postConfig);
+
+        /// 插入文章
+        $('#ccw-content').append(postHTML);
+           
+        /// 插入標題Id, 以便完成目錄連結
+        post_addHeaderId($('#ccw-post-content'), postConfig.toc.ids);
+
+        /// 清除原始內文
+        $('#jv-source-content').empty();
+
+        /// 啟動 scroll 與 sticky 行為
+        global.calcite.init();
     };
+
+    function post_getConfig (jvroot) {
+        var title = jvroot.find('.contentheading')[0][0].textContent,
+            author = jvroot.find('.small')[0][0].textContent,
+            createdate = jvroot.find('.createdate')[0][0].textContent;
+
+        var contentTbRoot = jvroot.find('.contentpaneopen')[1],
+            contentRoot = $(contentTbRoot).find('td')[2],
+            content = contentRoot.innerHTML;
+
+        return {
+            'title'     : post_rmEscapeCharacter(title),
+            'author'    : post_getAuthor(author),
+            'createdate': post_getDate(createdate),
+            'content'   : content,
+            'toc'       : post_getToc(contentRoot)
+        };
+    }
+
+    function post_rmEscapeCharacter(text) {
+        return text.replaceAll(/(\r|\t|\n)/gm, "");
+    }
+
+    function post_rmEmptyLine(text) {
+        return text.replaceAll('<p>&nbsp;</p>');
+    }
+
+    function post_getAuthor (text) {
+        return text.replace(/(\r|\t|\n)/gm, "").replace("作者是 ","").split(" ")[0];
+    }
+
+    function post_getDate(text) {
+        text = text.replace(/(\r|\t|\n)/gm, "").split(",")[1].split(" ");
+        return text[1] + " " + text[2] + ", " + text[3];
+    }
+
+    function post_getToc (contentRoot) {
+        var headerIds = new Array();
+        
+        var startHTML  = '<div id="ccw-post-toc" class="column-6 tablet-hide"><h4 class="side-nav-title">目錄</h4><nav>';
+        var contentHTML = '';
+        var endHTML = '</nav><div class="js-sticky scroll-show padding-left-6" data-top="50"><a href="#" class="right btn btn-gray btn-clear">返回頂端</a></div></div>';
+
+        $(contentRoot).find('h1, h2, h3, h4, h5, h6').each(function (idx, header) {
+            var tagName = header.nodeName,
+                text = header.textContent,
+                id = !(header.id)? ('ccw-header-'+idx+Date.now()): header.id;
+            
+            /// 取得標題id
+            headerIds.push(id);
+            
+            /// 產生html
+            if (tagName === 'H1') contentHTML += '<a href="#'+ id +'" class="side-nav-link">' + text + '</a>';
+            if (tagName === 'H2') contentHTML += '<a href="#'+ id +'" class="side-nav-link padding-left-2">' + text + '</a>';
+            if (tagName === 'H3') contentHTML += '<a href="#'+ id +'" class="side-nav-link padding-left-3">' + text + '</a>';
+            if (tagName === 'H4') contentHTML += '<a href="#'+ id +'" class="side-nav-link padding-left-4">' + text + '</a>';
+            if (tagName === 'H5') contentHTML += '<a href="#'+ id +'" class="side-nav-link padding-left-5">' + text + '</a>';
+            if (tagName === 'H6') contentHTML += '<a href="#'+ id +'" class="side-nav-link padding-left-6">' + text + '</a>';
+        });
+
+        return { 
+            'ids' : headerIds,
+            'html': startHTML + contentHTML + endHTML 
+        };
+    }
+
+    function post_createHTML (postConfig) {
+        var htmlStr = [
+                /// content column 
+                '<div class="grid container leader-1"><div id="ccw-post-content" class="column-14 tablet-column-12 pre-2">',
+                '<h1>'+ postConfig.title +'</h1>',
+                '<p>'+ postConfig.createdate +'<span class="padding-left-2">'+ postConfig.author +'<span></p>',
+                postConfig.content,
+                '</div>',
+                /// toc nav column
+                postConfig.toc.html,
+                '</div></div>'
+        ];
+        return htmlStr.join('');
+    }
+
+    function post_addHeaderId (contentRoot, ids) {
+        contentRoot.find('h1, h2, h3, h4, h5, h6').each(function (idx, header) {
+            header.id = ids[idx];
+        });
+    } 
 
     // ============================
     //      Blog
     // ============================
     var initBlogPage = function () {
-        var articles = blog_posts_getConfig($('#jv-source-content')),
-            articlesHTML = blog_posts_createHTML(articles);
+        var postsConfig = blog_posts_getConfig($('#jv-source-content')),
+            postsHTML = blog_posts_createHTML(postsConfig);
         
         var pagination = blog_pagination_getConfig(),
             paginationHTML = blog_pagination_createHTML(pagination);
 
-        $('#ccw-content').append(articlesHTML);
+        $('#ccw-content').append(postsHTML);
         $('#ccw-content').append(paginationHTML);
     };
 
@@ -316,7 +415,7 @@
     // ============================
     var initLayout = function () {
         if ( getPageType() === 'single-page') initSinglePage();
-        if ( getPageType() === 'article')     initArticlePage();
+        if ( getPageType() === 'post')     initPostPage();
         if ( getPageType() === 'blog')        initBlogPage();
         if ( getPageType() === 'search')      initSearchPage();
     };
