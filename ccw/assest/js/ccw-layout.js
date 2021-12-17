@@ -26,7 +26,8 @@
     var initSinglePage = function () {
         // 搬移內容
         $('#ccw-content').append( $('#ccw-source-content')[0].innerHTML );
-        $('#ccw-source-content').remove();
+        $('#ccw-source-content').empty();
+        global.calcite.init();
     };
 
     // ============================
