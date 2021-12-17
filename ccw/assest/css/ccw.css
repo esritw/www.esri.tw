@@ -54,14 +54,14 @@
     horizontal line
  ==========================*/
 hr.separator {
-border-top: none;
-width: 40px;
-height: 2px;
-background-color: #974dff;
+    border-top: none;
+    width: 40px;
+    height: 2px;
+    background-color: #974dff;
 }
 
 hr.separator.center {
-margin: 15px auto 20px;
+    margin: 15px auto 20px;
 }
 /*=============================
     end horizontal line
@@ -70,11 +70,27 @@ margin: 15px auto 20px;
 /*=============================
     Typograph
  ==============================*/
-p.no-bottom-margin {
-margin-bottom: 0;
-}
+p.no-bottom-margin { margin-bottom: 0; }
 /*=============================
     End Typograph
+ ==============================*/
+
+/*=============================
+    Grid
+ ==============================*/
+.padding-left-5 { padding-left: 5rem; }
+.padding-left-6 { padding-left: 6rem; }
+/*=============================
+    End Grid
+ ==============================*/
+
+/*=============================
+    Button
+ ==============================*/
+.btn-gray { color: #a9a9a9; border-color: #a9a9a9; }
+.btn-gray:hover { color: white; border-color: #a9a9a9; background-color: #a9a9a9; }
+/*=============================
+    End Button
  ==============================*/
 
 /*======================
