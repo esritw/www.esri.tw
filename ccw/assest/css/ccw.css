@@ -186,3 +186,13 @@ p.no-bottom-margin { margin-bottom: 0; }
 /* ==============================
     end card thumb zoom effect
  ==============================*/
+
+/* ==============================
+    post toc navgation
+ ==============================*/
+#ccw-post-toc .side-nav-link { 
+    border-top: none; 
+}
+/* ==============================
+    end post toc navgation
+ ==============================*/
