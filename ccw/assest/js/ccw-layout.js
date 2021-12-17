@@ -175,7 +175,7 @@
                     if (j === 2) 
                         articles[idx]['summary'] = tdNode.innerText;
                     if (j === 2) 
-                        articles[idx]['thumbUrl'] = !($(tdNode).find('.thumb').length)? ( !($(tdNode).find('img').length)?'':$(tdNode).find('img')[0][0].src ): $(tdNode).find('.thumb')[0][0].src; 
+                        articles[idx]['thumbUrl'] = !($(tdNode).find('.thumb').length)? ( !($(tdNode).find('img').length)?'':$(tdNode).find('img')[0].src ): $(tdNode).find('.thumb')[0][0].src; 
                 });
             }
         });
