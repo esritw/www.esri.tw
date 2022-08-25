@@ -229,15 +229,19 @@
             next:    { num: 0, url:'' },
             isStart: false,
             isLast: false,
+            isOnlyOnePage: false,
             step: 6 // 一頁顯示幾篇文章，需再後臺選單中設定
         };
 
         /// 已知的值
         pagination.start.num = 1;
+        pagination.isOnlyOnePage = !(idxMax)? true: false;
         pagination.isStart = !($(root[0]).find('a')[0])? true : false;
         pagination.isLast = !($(root[idxMax]).find('a')[0])? true : false;
 
-        if (pagination.isStart) 
+        if ( pagination.isOnlyOnePage ) 
+	        blog_pagination_setOnlyOnePageParams (pagination);
+        else if (pagination.isStart) 
             blog_pagination_setStartPageParams(pagination, root, idxMax);
         else if (pagination.isLast) 
             blog_pagination_setEndPageParams(pagination, root, idxMax);
@@ -246,7 +250,27 @@
 
         return pagination;     
     }
+    
+    function blog_pagination_setOnlyOnePageParams (pagination) {
+        // 設定連結網址
+        pagination.start.url   = global.location.href;
+        pagination.last.url    = global.location.href;
+        pagination.current.url = global.location.href;
+        pagination.pre.url     = global.location.href;
+        pagination.next.url    = global.location.href;
 
+        // 設定頁面編號
+        pagination.start.num   = 1;
+        pagination.last.num    = 1;
+        pagination.current.num = 1;
+        pagination.pre.num     = 1;
+        pagination.next.num    = 1;
+
+        // 設定是否為首頁與末頁
+        pagination.isStart = true;
+        pagination.isLast  = true;
+    }
+    
     function blog_pagination_setStartPageParams (pagination, root, idxMax) {
         // 設定連結網址
         pagination.start.url   = global.location.href;
