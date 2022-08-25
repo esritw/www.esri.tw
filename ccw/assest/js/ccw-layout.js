@@ -239,8 +239,10 @@
         pagination.isStart = !($(root[0]).find('a')[0])? true : false;
         pagination.isLast = !($(root[idxMax]).find('a')[0])? true : false;
 
-        if ( pagination.isOnlyOnePage ) 
+        if ( pagination.isOnlyOnePage ) {
 	        blog_pagination_setOnlyOnePageParams (pagination);
+		return pagination;
+	}
         else if (pagination.isStart) 
             blog_pagination_setStartPageParams(pagination, root, idxMax);
         else if (pagination.isLast) 
