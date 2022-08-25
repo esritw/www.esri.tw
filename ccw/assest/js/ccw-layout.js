@@ -235,7 +235,7 @@
 
         /// 已知的值
         pagination.start.num = 1;
-        pagination.isOnlyOnePage = !(idxMax)? true: false;
+        pagination.isOnlyOnePage = (idxMax < 0)? true: false;
         pagination.isStart = !($(root[0]).find('a')[0])? true : false;
         pagination.isLast = !($(root[idxMax]).find('a')[0])? true : false;
 
