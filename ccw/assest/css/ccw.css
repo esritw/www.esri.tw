@@ -243,6 +243,14 @@ p.no-bottom-margin { margin-bottom: 0; }
         line-height: 2rem!important;
         text-align: center;
     }
+    
+    .ccw-table-response tr:last-child {
+        border-bottom: solid 1px;
+    }
+    
+    .ccw-table-response.table-blue tr:last-child {
+        border-bottom: 1px solid #0079c1;
+    }
 }
 /* ==============================
     end response table
