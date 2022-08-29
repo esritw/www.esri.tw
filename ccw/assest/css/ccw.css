@@ -199,3 +199,51 @@ p.no-bottom-margin { margin-bottom: 0; }
 /* ==============================
     end post toc navgation
  ==============================*/
+
+/* ==============================
+    response table
+ ==============================*/
+.ccw-table-response td { 
+    padding-top: 1.5rem!important; 
+    padding-bottom: 1.5rem!important;
+    vertical-align:  middle!important;
+}
+
+@media only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px) {
+    .ccw-table-response, 
+    .ccw-table-response thead, 
+    .ccw-table-response tbody, 
+    .ccw-table-response th, 
+    .ccw-table-response td, 
+    .ccw-table-response tr {
+        display: block;
+    }
+
+    .ccw-table-response {
+        border: none;
+    }
+
+    .ccw-table-response thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .ccw-table-response tr {
+        border: solid 1px #56A5D8;
+        margin-bottom: 2rem;
+    }
+
+    .ccw-table-response td {
+        border: none!important;
+        position: relative!important;
+        padding-top: 0!important; 
+        padding-bottom: 0!important;
+        line-height: 2rem!important;
+        text-align: center;
+    }
+}
+/* ==============================
+    end response table
+ ==============================*/
