@@ -7,7 +7,14 @@
 /*=============================
     end of joomla layout
  ==============================*/
-
+/*=========================
+   imge
+ ==========================*/
+.img-height-100 { height: 100%; }
+.img-width-100 { width: 100%; }
+/*=========================
+    end of image
+ ==========================*/
 /*=========================
     navigation
  ==========================*/
@@ -71,6 +78,8 @@ hr.separator.center {
     Typograph
  ==============================*/
 p.no-bottom-margin { margin-bottom: 0; }
+.text-trailer-0 { margin-bottom: 0; }
+.text-justify { text-align: justify; }
 /*=============================
     End Typograph
  ==============================*/
@@ -80,6 +89,10 @@ p.no-bottom-margin { margin-bottom: 0; }
  ==============================*/
 .padding-left-5 { padding-left: 5rem; }
 .padding-left-6 { padding-left: 6rem; }
+.padding-left-0 { padding-left: 0; }
+.padding-right-0 { padding-right: 0; }
+.pre-0 { margin-left: 0; }
+.post-0 { margin-right: 0; }
 /*=============================
     End Grid
  ==============================*/
@@ -255,3 +268,103 @@ p.no-bottom-margin { margin-bottom: 0; }
 /* ==============================
     end response table
  ==============================*/
+
+/*============================
+    Palette
+ =============================*/
+
+/*----------------------
+ * background color
+ *----------------------*/
+.bg-color-white         { background-color: #fff; }
+.bg-color-off-white     { background-color: #f8f8f8; }
+.bg-color-lightest-gray { background-color: #efefef; }
+.bg-color-lighter-gray  { background-color: #ccc; }
+.bg-color-light-gray    { background-color: #a9a9a9; }
+.bg-color-gray 			{ background-color: #959595; }
+.bg-color-dark-gray 	{ background-color: #828282; }
+.bg-color-darker-gray 	{ background-color: #6e6e6e; }
+.bg-color-darkest-gray 	{ background-color: #595959; }
+.bg-color-off-black 	{ background-color: #4c4c4c; }
+.bg-color-transparent-black { background-color: rgba(0,0,0,0.75); }
+.bg-color-black 		{ background-color: #323232; }
+
+.bg-color-lightest-blue { background-color: #d2e9f9; }
+.bg-color-lighter-blue 	{ background-color: #bcdaed; }
+.bg-color-light-blue 	{ background-color: #56a5d8; }
+.bg-color-blue 			{ background-color: #0079c1; }
+.bg-color-dark-blue 	{ background-color: #005e95; }
+
+.bg-color-light-green 	{ background-color: #9bc19c; }
+.bg-color-green 		{ background-color: #5a9359; }
+.bg-color-dark-green 	{ background-color: #338033; }
+
+.bg-color-light-red 	{ background-color: #e4a793; }
+.bg-color-red 			{ background-color: #de2900; }
+.bg-color-dark-red 		{ background-color: #ab3c16; }
+
+.bg-color-light-orange 	{ background-color: #e8912e; }
+.bg-color-orange 		{ background-color: #d17e21; }
+.bg-color-dark-orange 	{ background-color: #ad6511; }
+
+.bg-color-light-yellow 	{ background-color: #efe397; }
+.bg-color-yellow 		{ background-color: #e4d154; }
+.bg-color-dark-yellow 	{ background-color: #d9bf2b; }
+
+.bg-color-light-purple 	{ background-color: #c4bcdc; }
+.bg-color-purple 		{ background-color: #9081bc; }
+.bg-color-dark-purple 	{ background-color: #7461a8; }
+
+.bg-color-light-brown 	{ background-color: #d2b38f; }
+.bg-color-brown 		{ background-color: #a57946; }
+.bg-color-dark-brown 	{ background-color: #8c5e2a; }
+
+/*----------------------
+ * text color
+ *----------------------*/
+.text-color-white         	{ color: #fff; }
+.text-color-off-white     	{ color: #f8f8f8; }
+.text-color-lightest-gray 	{ color: #efefef; }
+.text-color-lighter-gray  	{ color: #ccc; }
+.text-color-light-gray    	{ color: #a9a9a9; }
+.text-color-gray 			{ color: #959595; }
+.text-color-dark-gray 		{ color: #828282; }
+.text-color-darker-gray 	{ color: #6e6e6e; }
+.text-color-darkest-gray 	{ color: #595959; }
+.text-color-off-black 		{ color: #4c4c4c; }
+.text-color-transparent-black { color: rgba(0,0,0,0.75); }
+.text-color-black 			{ color: #323232; }
+
+.text-color-lightest-blue 	{ color: #d2e9f9; }
+.text-color-lighter-blue 	{ color: #bcdaed; }
+.text-color-light-blue 		{ color: #56a5d8; }
+.text-color-blue 			{ color: #0079c1; }
+.text-color-dark-blue 		{ color: #005e95; }
+
+.text-color-light-green 	{ color: #9bc19c; }
+.text-color-green 			{ color: #5a9359; }
+.text-color-dark-green 		{ color: #338033; }
+
+.text-color-light-red 		{ color: #e4a793; }
+.text-color-red 			{ color: #de2900; }
+.text-color-dark-red 		{ color: #ab3c16; }
+
+.text-color-light-orange 	{ color: #e8912e; }
+.text-color-orange 			{ color: #d17e21; }
+.text-color-dark-orange 	{ color: #ad6511; }
+
+.text-color-light-yellow 	{ color: #efe397; }
+.text-color-yellow 			{ color: #e4d154; }
+.text-color-dark-yellow 	{ color: #d9bf2b; }
+
+.text-color-light-purple 	{ color: #c4bcdc; }
+.text-color-purple 			{ color: #9081bc; }
+.text-color-dark-purple 	{ color: #7461a8; }
+
+.text-color-light-brown 	{ color: #d2b38f; }
+.text-color-brown 			{ color: #a57946; }
+.text-color-dark-brown 		{ color: #8c5e2a; }
+
+/*============================
+    End  Palette
+ =============================*/
