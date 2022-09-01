@@ -123,7 +123,7 @@
     function post_createHTML (postConfig) {
         var htmlStr = [
                 /// content column 
-                '<div class="grid container leader-1"><div id="ccw-post-content" class="column-14 tablet-column-12 pre-2">',
+                '<div class="grid-container leader-1"><div id="ccw-post-content" class="column-14 tablet-column-12 pre-2">',
                 '<h1><strong>'+ postConfig.title +'</strong></h1>',
                 '<p>'+ postConfig.createdate +'<span class="padding-left-2">'+ postConfig.author +'<span></p>',
                 postConfig.content,
