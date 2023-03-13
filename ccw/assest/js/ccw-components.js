@@ -29,10 +29,34 @@
 	};
 	
 	// ============================
+	//      ccw-tab
+	// ============================
+	var tab = function () {
+		// Get data
+		var group = $(this).attr("data-tab-group"),
+		    panel = $(this).attr("data-tab-panel");	
+		
+		// tab: remove active effect class
+		$('.ccw-tab').removeClass('is-active');
+
+		// tab: add active effect Class
+		$(this).addClass('is-active');
+
+		// Panel: remove is-active class
+		$('.ccw-tab-panel').removeClass('is-active');
+
+		// Panel: add is-active class
+		$(".ccw-tab-panel[data-tab-group=" + group + "]")
+		  .filter("[data-tab-panel=" + panel + "]")
+		    .addClass('is-active');
+	};
+ 	
+	// ============================
 	//      initialize components
 	// ============================
 	var initComponents = function () {
 		subnav_tablet();
+		tab();
 	};
 
     // ========================================================
