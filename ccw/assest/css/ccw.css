@@ -12,6 +12,13 @@
  ==========================*/
 .img-height-100 { height: 100%; }
 .img-width-100 { width: 100%; }
+
+.img-align-top { vertical-align: top; }
+.img-align-middle { vertical-align: middle; }
+.img-align-baseline { vertical-align: baseline; }
+.img-align-baseline { vertical-align: bottom; }
+
+.img-icon { border-radius: 50%; }
 /*=========================
     end of image
  ==========================*/
@@ -77,7 +84,13 @@ hr.separator.center {
 /*=============================
     Typograph
  ==============================*/
+h1, h2, h3, h4, h5, h6 { font-family:Helvetica,Arial,Microsoft Yahei,SimSun,STXihei,sans-serif }
 p.no-bottom-margin { margin-bottom: 0; }
+.text-head { font-family:Helvetica,Arial,Microsoft Yahei,SimSun,STXihei,sans-serif } 
+.text-lighter { font-weight: 100; }
+.text-normal  { font-weight: 400; }
+.text-bold    { font-weight: 700; }
+.text-bolder  { font-weight: 900; }
 .text-trailer-0 { margin-bottom: 0; }
 .text-justify { text-align: justify; }
 /*=============================
@@ -221,6 +234,34 @@ p.no-bottom-margin { margin-bottom: 0; }
 /*=============================
     end of ccw-dropdown
  ==============================*/
+
+/*=========================
+    ccw-tab
+ ==========================*/
+.ccw-tab { cursor: pointer; }
+
+.ccw-tab-style-1 { border: solid .5px #0079c1; }
+.ccw-tab-style-1:hover { box-shadow: inset 0px 0px 8px 0px #0079c1; }
+.ccw-tab-style-1.is-active {
+    box-shadow: inset 0px 0px 8px 0px #eee;
+    background-color: #0079c1;
+    color: #fff;
+}
+
+.ccw-tab-style-2 { box-shadow: inset 0px -4px 0px 0px #eee; }
+.ccw-tab-style-2:hover { box-shadow: inset 0px -4px 0px 0px #0079c1; }
+.ccw-tab-style-2.is-active { 
+    color: #0079c1; 
+    box-shadow: inset 0px -4px 0px 0px #0079c1; 
+}
+
+.ccw-tab-panel { display: none; }
+.ccw-tab-panel.is-active { display: block; }
+
+/*=============================
+    end of ccw-tab
+ ==============================*/
+
 
 /* ==============================
     card thumb zoom effect
