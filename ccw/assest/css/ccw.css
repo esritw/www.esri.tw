@@ -18,7 +18,8 @@
 .img-align-baseline { vertical-align: baseline; }
 .img-align-baseline { vertical-align: bottom; }
 
-.img-icon { border-radius: 50%; }
+.img-icon { max-height: 2rem; vertical-align: middle;}
+.img-circle {  border-radius: 50%; }
 /*=========================
     end of image
  ==========================*/
