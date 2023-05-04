@@ -11,7 +11,8 @@
     var getPageType = function () {
         var qstr = global.location.search,
             ccwContent = $('#ccw-source-content').length;
-
+	    
+	if ( !qstr )  return 'single-page';
         if ( qstr.includes('view=article') && ccwContent )  return 'single-page';
         if ( qstr.includes('view=article') && !ccwContent ) return 'post';
         if ( qstr.includes('layout=blog') )   return 'blog';
