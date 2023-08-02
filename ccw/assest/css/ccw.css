@@ -85,9 +85,9 @@ hr.separator.center {
 /*=============================
     Typograph
  ==============================*/
-h1, h2, h3, h4, h5, h6 { font-family:Helvetica,Arial,Microsoft Yahei,SimSun,STXihei,sans-serif }
+h1, h2, h3, h4, h5, h6 { font-family:Helvetica,Arial,Microsoft Yahei; }
 p.no-bottom-margin { margin-bottom: 0; }
-.text-head { font-family:Helvetica,Arial,Microsoft Yahei,SimSun,STXihei,sans-serif } 
+.text-head { font-family:Helvetica,Arial,Microsoft Yahei; } 
 .text-lighter { font-weight: 100; }
 .text-normal  { font-weight: 400; }
 .text-bold    { font-weight: 700; }
